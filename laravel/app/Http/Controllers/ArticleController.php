@@ -18,6 +18,12 @@ class ArticleController extends Controller
         return view('articles.create');
     }
 
+    /**
+     * 記事を作成
+     * @param ArticleRequest $request
+     * @param Article $article
+     * @return \Illuminate\Http\RedirectResponse
+     */
     public function store(ArticleRequest $request, Article $article) {
         $article->fill($request->all());
         $article->user_id = $request->user()->id;
