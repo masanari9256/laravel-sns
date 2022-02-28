@@ -50,4 +50,15 @@ class ArticleController extends Controller
         $article->fill($request->all())->save();
         return redirect()->route('articles.index');
     }
+
+    /**
+     * 記事を削除
+     * @param Article $article
+     * @return \Illuminate\Http\RedirectResponse
+     * @throws \Exception
+     */
+    public function destroy(Article $article) {
+        $article->delete();
+        return redirect()->route('articles.index');
+    }
 }
