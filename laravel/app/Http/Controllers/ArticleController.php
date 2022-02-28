@@ -31,7 +31,17 @@ class ArticleController extends Controller
         return redirect()->route('articles.index');
     }
 
+    /**
+     * 記事を編集
+     * @param Article $article
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
     public function edit(Article $article) {
         return view('articles.edit', ['article' => $article]);
+    }
+
+    public function update(ArticleRequest $request, Article $article) {
+        $article->fill($request->all())->save();
+        return redirect()->route('articles.index');
     }
 }
