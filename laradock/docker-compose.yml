@@ -1,12 +1,16 @@
 version: "3"
 services:
   workspace:
-    build: ./docker/php-fpm
+    build:
+      context: .
+      dockerfile: ./docker/php-fpm/Dockerfile
     volumes:
-        - ${APP_CODE_PATH_HOST}:/var/www/html/
+      - ${APP_CODE_PATH_HOST}:/var/www/html/
 
   php-fpm:
-    build: ./docker/php-fpm
+    build:
+      context: .
+      dockerfile: ./docker/php-fpm/Dockerfile
     ports:
       - 9000:9000
     volumes:

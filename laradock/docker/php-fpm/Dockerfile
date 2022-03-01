@@ -1,6 +1,6 @@
 FROM php:7.3-fpm
 
-RUN apt-get update && apt-get install -y --no-install-recommends \
+RUN apt-get update && apt-get install -y --no-install-recommends config\
   libpq-dev \
   libzip-dev \
   postgresql \
@@ -17,7 +17,5 @@ COPY --from=composer:1 /usr/bin/composer /usr/bin/composer
 
 COPY --from=node:14.2 /usr/local/bin /usr/local/bin
 COPY --from=node:14.2 /usr/local/lib /usr/local/lib
-
-COPY php.ini /usr/local/etc/php/
 
 WORKDIR /var/www/html
