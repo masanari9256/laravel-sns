@@ -21,8 +21,8 @@ class Article extends Model
         return $this->belongsToMany('App\User', 'likes')->withTimestamps();
     }
 
-    public function isLikedBy(?User $user) {
-        return return $user
+    public function isLikedBy(?User $user): bool {
+        return $user
             ? (bool) $this->likes->where('id', $user->id)->count()
             : false;
     }
