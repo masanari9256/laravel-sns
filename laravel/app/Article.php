@@ -21,9 +21,22 @@ class Article extends Model
         return $this->belongsToMany('App\User', 'likes')->withTimestamps();
     }
 
+    /**
+     * ユーザーがいいね済かを判定する
+     * @param User|null $user
+     * @return bool
+     */
     public function isLikedBy(?User $user): bool {
         return $user
             ? (bool) $this->likes->where('id', $user->id)->count()
             : false;
+    }
+
+    /**
+     * 記事のいいね数をカウントするアクセサ
+     * @return int
+     */
+    public function getCountLikesAttribute(): int {
+        return $this->likes->count();
     }
 }
