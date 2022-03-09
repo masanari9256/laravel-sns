@@ -1,3 +1,5 @@
 data/
 .idea/
 *.log
+laravel/_ide_helper.php
+laravel/_ide_helper_models.php
