@@ -76,8 +76,8 @@ class ArticleController extends Controller
     }
 
     public function like(Request $request, Article $article) {
-        $article->likes->detach($request->user()->id);
-        $article->likes->attach($request->user()->id);
+        $article->likes()->detach($request->user()->id);
+        $article->likes()->attach($request->user()->id);
 
         return [
             'id' => $article->id,
@@ -86,7 +86,7 @@ class ArticleController extends Controller
     }
 
     public function unlike(Request $request, Article $article) {
-        $article->likes->detach($request->user()->id);
+        $article->likes()->detach($request->user()->id);
 
         return [
             'id' => $article->id,
